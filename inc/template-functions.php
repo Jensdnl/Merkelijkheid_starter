@@ -2,9 +2,14 @@
 //** WP optimalicatie **//
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('wp_print_styles', 'print_emoji_styles');
-add_filter( 'feed_links_show_comments_feed', '__return_false' );
+add_filter('feed_links_show_comments_feed', '__return_false' );
 remove_action ('wp_head', 'rsd_link');
 remove_action( 'wp_head', 'wlwmanifest_link');
+
+function remove_wp_block_library_css(){
+	wp_dequeue_style( 'wp-block-library' );
+}
+add_action( 'wp_enqueue_scripts', 'remove_wp_block_library_css' );
 
 function get_excerpt_SEO($count){
 	$permalink = get_permalink();
@@ -82,4 +87,3 @@ function dashboard_custom_feed_output() {
 	echo "</div>";  
 }  
 add_action('wp_dashboard_setup', 'wpc_dashboard_widgets'); 
-

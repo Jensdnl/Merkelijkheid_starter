@@ -11,18 +11,10 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
+	<footer id="colophon" class="container">
 		<div class="site-info">
-			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'merkelijkheid' ) ); ?>">
 				<?php
-				/* translators: %s: CMS name, i.e. WordPress. */
-				printf( esc_html__( 'Proudly powered by %s', 'merkelijkheid' ), 'WordPress' );
-				?>
-			</a>
-			<span class="sep"> | </span>
-				<?php
-				/* translators: 1: Theme name, 2: Theme author. */
-				printf( esc_html__( 'Theme: %1$s by %2$s.', 'merkelijkheid' ), 'merkelijkheid', '<a href="https://merkelijkheid.nl">Jens</a>' );
+				printf( esc_html__( 'Site door: %1$s', 'merkelijkheid' ), '<a target="_blank" href="https://merkelijkheid.nl">Merkelijkheid</a>' );
 				?>
 		</div><!-- .site-info -->
 	</footer><!-- #colophon -->

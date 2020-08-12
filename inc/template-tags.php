@@ -153,13 +153,16 @@ if ( ! function_exists( 'merkelijkheid_post_thumbnail' ) ) :
 	}
 endif;
 
-if ( ! function_exists( 'wp_body_open' ) ) :
-	/**
-	 * Shim for sites older than 5.2.
-	 *
-	 * @link https://core.trac.wordpress.org/ticket/12563
-	 */
-	function wp_body_open() {
-		do_action( 'wp_body_open' );
-	}
-endif;
+function merkelijkheid_search_form(){
+if (!($s = filter_input(INPUT_GET, 's', FILTER_SANITIZE_STRING))) {
+$s = ''; 
+}
+?>
+<form role="search" method="get" class="form-inline" action="<?php echo get_site_url(); ?>">
+	<div class="form-group">
+		<input type="search" class="form-control search-field mr-sm-1" placeholder="<?php _e("Zoeken...", "merkelijkheid"); ?>" value="<?php echo $s; ?>" name="s">
+		<input type="submit" class="btn btn-primary search-submit" value="Zoeken">
+	</div>
+</form>
+<?php
+}

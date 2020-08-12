@@ -44,17 +44,26 @@ add_action( 'after_setup_theme', 'merkelijkheid_setup' );
  * Enqueue scripts and styles.
  */
 function merkelijkheid_scripts() {
+	wp_enqueue_style( 'merkelijkheid-bootstrap', get_template_directory_uri() . '/css/bootstrap/bootstrap.min.css');
 	wp_enqueue_style( 'merkelijkheid-style', get_stylesheet_uri(), array(), _S_VERSION );
-	wp_enqueue_script( 'merkelijkheid-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+    // wp_enqueue_script( 'merkelijkheid-popper', get_template_directory_uri() . '/js/popper/popper.min.js', array('jquery'), null, true);
+    wp_enqueue_script( 'merkelijkheid-bootstrap', get_template_directory_uri() . '/js/bootstrap/bootstrap.min.js', array('jquery'), null, true);
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'merkelijkheid_scripts' );
+function register_navwalker(){
+	require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+}
+add_action( 'after_setup_theme', 'register_navwalker' );
+
+
 /**
  * Functions which enhance the theme by hooking into WordPress.
  */
 require get_template_directory() . '/inc/template-functions.php';
+require get_template_directory() . '/inc/template-tags.php';
 
 /**
  * Customizer additions.
