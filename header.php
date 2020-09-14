@@ -33,7 +33,7 @@
 					aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'merkelijkheid' ); ?>">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<a class="navbar-brand" href="#">Merkelijkheid Starter</a>
+				<a class="navbar-brand" href="<?php echo get_site_url(); ?>">Merkelijkheid Starter</a>
 				<?php
         wp_nav_menu( array(
             'theme_location'    => 'menu-1',
